@@ -7,8 +7,10 @@
 | nickname                    | string              | null: false,              |
 | email                       | string              | null: false, unique: true |
 | encrypted_password          | string              | null: false               |
-| full_name                   | string              | null: false               |
-| kana_name                   | string              | null: false,              |
+| last_name                   | string              | null: false               |
+| first_name                  | string              | null: false,              |
+| last_name_kana              | string              | null: false               |
+| first_name_kana             | string              | null: false,              |
 | birthday                    | date                | null: false               |
 
 ### Association
@@ -18,17 +20,17 @@
 
 ## items table
 
-| Column                              | Type       | Options                        |
-|-------------------------------------|------------|--------------------------------|
-| user                                | integer    | null: false,                   |
-| name                                | string     | null: false                    |
-| description                         | text       | null: false                    |
-| category_id                         | integer    | null: false,                   |
-| condition_id                        | integer    | null: false,                   |
-| shipping_fee_id                     | integer    | null: false,                   |
-| shipping_region_id                  | integer    | null: false,                   |
-| shipping_day_id                     | integer    | null: false,                   |
-| price                               | integer    | null: false,                   |
+| Column                               | Type        | Options                        |
+|--------------------------------------|-------------|--------------------------------|
+| user                                 | references  | null: false, foreign_key: true |
+| name                                 | string      | null: false                    |
+| description                          | text        | null: false                    |
+| category_id                          | integer     | null: false,                   |
+| condition_id                         | integer     | null: false,                   |
+| shipping_fee_id                      | integer     | null: false,                   |
+| shipping_region_id                   | integer     | null: false,                   |
+| shipping_day_id                      | integer     | null: false,                   |
+| price                                | integer     | null: false,                   |
 
 ### Association
 
@@ -39,8 +41,8 @@
 
 | Column          | Type       | Options                        |
 |-----------------|------------|--------------------------------|
-| user            | integer    | null: false, foreign_key: true |
-| item            | integer    | null: false, foreign_key: true |
+| user            | references | null: false, foreign_key: true |
+| item            | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -54,8 +56,8 @@
 |-------------------------------------|------------|--------------------------------|
 | postal_code                         | string     | null: false                    |
 | shipping_region_id                  | string     | null: false                    |
-| order                               | integer    | null: false, foreign_key: true |
 | city                                | string     | null: false                    |
+| order                               | references | null: false, foreign_key: true |
 | street_address                      | string     | null: false,                   |
 | building_name                       | string     |                                |
 | phone_number                        | string     | null: false,                   |
