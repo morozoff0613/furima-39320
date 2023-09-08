@@ -4,9 +4,11 @@
 
 | Column                      | Type                | Options                   |
 |-----------------------------|---------------------|---------------------------|
+| nickname                    | string              | null: false,              |
 | email                       | string              | null: false, unique: true |
 | encrypted_password          | string              | null: false               |
-| username                    | string              | null: false               |
+| full_name                   | string              | null: false               |
+| kana_name                   | string              | null: false,              |
 | birthday                    | date                | null: false               |
 
 ### Association
@@ -18,14 +20,14 @@
 
 | Column                              | Type       | Options                        |
 |-------------------------------------|------------|--------------------------------|
-| user_id                             | integer    | null: false, foreign_key: true |
+| user                                | integer    | null: false,                   |
 | name                                | string     | null: false                    |
 | description                         | text       | null: false                    |
 | category_id                         | integer    | null: false,                   |
 | condition_id                        | integer    | null: false,                   |
 | shipping_fee_id                     | integer    | null: false,                   |
 | shipping_region_id                  | integer    | null: false,                   |
-| shipping_days_id                    | integer    | null: false,                   |
+| shipping_day_id                     | integer    | null: false,                   |
 | price                               | integer    | null: false,                   |
 
 ### Association
@@ -37,8 +39,8 @@
 
 | Column          | Type       | Options                        |
 |-----------------|------------|--------------------------------|
-| user_id         | integer    | null: false, foreign_key: true |
-| item_id         | integer    | null: false, foreign_key: true |
+| user            | integer    | null: false, foreign_key: true |
+| item            | integer    | null: false, foreign_key: true |
 
 ### Association
 
@@ -52,7 +54,7 @@
 |-------------------------------------|------------|--------------------------------|
 | postal_code                         | string     | null: false                    |
 | shipping_region_id                  | string     | null: false                    |
-| order_id                            | integer    | null: false, foreign_key: true |
+| order                               | integer    | null: false, foreign_key: true |
 | city                                | string     | null: false                    |
 | street_address                      | string     | null: false,                   |
 | building_name                       | string     |                                |
