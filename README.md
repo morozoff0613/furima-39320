@@ -5,11 +5,9 @@
 | Column                      | Type                | Options                   |
 |-----------------------------|---------------------|---------------------------|
 | email                       | string              | null: false, unique: true |
-| password                    | string              | null: false               |
-| password_confirmation       | string              | null: false               |
+| encrypted_password          | string              | null: false               |
 | username                    | string              | null: false               |
-| created_at                  | timestamp           | null: false               |
-| updated_at                  | timestamp           | null: false               |
+| birthday                    | date                | null: false               |
 
 ### Association
 
@@ -20,51 +18,46 @@
 
 | Column                              | Type       | Options                        |
 |-------------------------------------|------------|--------------------------------|
-| user_id                             | integer    | null: false,                   |
-| image_url                           | string     | null: false                    |
+| user_id                             | integer    | null: false, foreign_key: true |
 | name                                | string     | null: false                    |
 | description                         | text       | null: false                    |
-| category                            | string     | null: false,                   |
-| condition                           | string     | null: false,                   |
-| shipping_fee                        | string     | null: false,                   |
-| shipping_region                     | string     | null: false,                   |
-| shipping_days                       | string     | null: false,                   |
+| category_id                         | integer    | null: false,                   |
+| condition_id                        | integer    | null: false,                   |
+| shipping_fee_id                     | integer    | null: false,                   |
+| shipping_region_id                  | integer    | null: false,                   |
+| shipping_days_id                    | integer    | null: false,                   |
 | price                               | integer    | null: false,                   |
-| commission                          | integer    | null: false,                   |
-| profit                              | integer    | null: false,                   |
-| created_at                          | timestamp  | null: false,                   |
-| updated_at                          | timestamp  | null: false,                   |
 
 ### Association
 
-- belongs_to :users
-- has_one :orders
+- belongs_to :user
+- has_one :order
 
 ## orders table
 
 | Column          | Type       | Options                        |
 |-----------------|------------|--------------------------------|
-| user_id         | integer    | null: false                    |
-| items_id        | integer    | null: false, foreign_key: true |
-| purchase_date   | timestamp  | null: false, foreign_key: true |
+| user_id         | integer    | null: false, foreign_key: true |
+| item_id         | integer    | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-- has_one :shipping-address
+- belongs_to :user
+- belongs_to :item
+- has_one :shipping_address
 
-## shipping-address table
+## shipping_addresses table
 
 | Column                              | Type       | Options                        |
 |-------------------------------------|------------|--------------------------------|
 | postal_code                         | string     | null: false                    |
-| prefecture                          | string     | null: false                    |
-| city                                | text       | null: false                    |
+| shipping_region_id                  | string     | null: false                    |
+| order_id                            | integer    | null: false, foreign_key: true |
+| city                                | string     | null: false                    |
 | street_address                      | string     | null: false,                   |
-| building_name                       | string     | null: false,                   |
+| building_name                       | string     |                                |
 | phone_number                        | string     | null: false,                   |
 
 ### Association
 
-- belongs_to :orders
+- belongs_to :order
