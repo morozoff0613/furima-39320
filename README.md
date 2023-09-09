@@ -55,7 +55,7 @@
 | Column                              | Type       | Options                        |
 |-------------------------------------|------------|--------------------------------|
 | postal_code                         | string     | null: false                    |
-| shipping_region_id                  | string     | null: false                    |
+| shipping_region_id                  | integer    | null: false                    |
 | city                                | string     | null: false                    |
 | order                               | references | null: false, foreign_key: true |
 | street_address                      | string     | null: false,                   |
